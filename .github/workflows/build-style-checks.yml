@@ -25,16 +25,24 @@ jobs:
     name: Lint Code Base
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      # Checkout the calling repository
+      - name: Checkout current repo
+        uses: actions/checkout@v3
+
+      # Checkout the central config repo
+      - name: Checkout central config repo
         uses: actions/checkout@v4
         with:
+          repository: mdegi/gitCentralConfig
+          path: central-config
+          token: ${{ secrets.GITHUB_TOKEN }}
           # Full git history is needed to get a proper list of changed files
           fetch-depth: 0
 
       - name: Lint Code Base
         uses: github/super-linter@v6
         env:
-          LINTER_RULES_PATH: .github/linters/
+          LINTER_RULES_PATH: central-config/.github/linters/
           JAVA_FILE_NAME: checkstyle.xml
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_JAVA: true
