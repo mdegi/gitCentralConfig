@@ -48,4 +48,4 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_JAVA: true
           DEFAULT_BRANCH: master
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
