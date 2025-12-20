@@ -25,20 +25,21 @@ jobs:
     name: Lint Code Base
     runs-on: ubuntu-latest
     steps:
-      # Checkout the calling repository
+      # Checkout the calling repository FIRST (this must own .git)
       - name: Checkout current repo
-        uses: actions/checkout@v3
-
-      # Checkout the central config repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+  
+      # Checkout the central config repo WITHOUT affecting .git
       - name: Checkout central config repo
         uses: actions/checkout@v4
         with:
           repository: mdegi/gitCentralConfig
+          ref: main
           path: central-config
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # Full git history is needed to get a proper list of changed files
-          fetch-depth: 0
-
+          fetch-depth: 1
+  
       - name: Lint Code Base
         uses: github/super-linter@v6
         env:
@@ -47,4 +48,4 @@ jobs:
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_JAVA: true
           DEFAULT_BRANCH: master
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
