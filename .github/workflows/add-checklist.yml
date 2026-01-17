@@ -7,7 +7,6 @@ permissions:
 jobs:
   add-review-checklist:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
       # Checkout the calling repository
       - name: Checkout current repo
