@@ -7,21 +7,22 @@ permissions:
 jobs:
   add-review-checklist:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       # Checkout the calling repository
       - name: Checkout current repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Checkout the central config repo
       - name: Checkout central config repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: mdegi/gitCentralConfig
           path: central-config
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add review checklist
-        uses: trixi-framework/add-pr-review-checklist@v1
+        uses: trixi-framework/add-pr-review-checklist@v1.2.0
         with:
           file: central-config/.github/PULL_REQUEST_TEMPLATE/pull_request_template.md
           no-checklist-keyword: '[no checklist]'
