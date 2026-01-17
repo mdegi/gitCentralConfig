@@ -51,6 +51,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   add-review-checklist:
+    permissions:
+      pull-requests: write
+
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
