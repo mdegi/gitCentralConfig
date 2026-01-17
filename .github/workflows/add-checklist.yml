@@ -10,11 +10,11 @@ jobs:
     steps:
       # Checkout the calling repository
       - name: Checkout current repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Checkout the central config repo
       - name: Checkout central config repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: mdegi/gitCentralConfig
           path: central-config
