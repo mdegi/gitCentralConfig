@@ -22,7 +22,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add review checklist
-        uses: trixi-framework/add-pr-review-checklist@v1.0.1
+        uses: trixi-framework/add-pr-review-checklist@v1.0.0
         with:
           file: central-config/.github/PULL_REQUEST_TEMPLATE/pull_request_template.md
           no-checklist-keyword: '[no checklist]'
