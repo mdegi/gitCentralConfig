@@ -51,6 +51,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   add-review-checklist:
+    needs: lint
     permissions:
       pull-requests: write
 
