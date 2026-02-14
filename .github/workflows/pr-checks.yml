@@ -5,16 +5,23 @@
 name: Maven Build, Lint and Review List
 
 on:
-  workflow_call:
+  workflow_call:    
+    inputs:
+      java_version:
+        description: 'Java version to use (e.g., 17, 21, 23)'
+        required: false
+        default: '23'
+        type: string
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Set up JDK 23
+    - name: Set up JDK ${{ inputs.java_version }}
       uses: actions/setup-java@v4
       with:
-        java-version: '23'
+        java-version: ${{ inputs.java_version }}
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
