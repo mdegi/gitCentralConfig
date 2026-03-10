@@ -6,6 +6,17 @@ name: Maven Build
 
 on:
   workflow_call:
+    inputs:
+        java_version:
+          description: 'Java version to use (e.g., 17, 21, 23)'
+          required: false
+          default: '21'
+          type: string
+        do_linting:
+          description: 'Indicator to perform code linting'
+          required: false
+          type: boolean
+          default: false          
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,7 +25,7 @@ jobs:
     - name: Set up JDK 23
       uses: actions/setup-java@v4
       with:
-        java-version: '23'
+        java-version: ${{ inputs.java_version }}
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
@@ -24,6 +35,7 @@ jobs:
     needs: build
     name: Lint Code Base
     runs-on: ubuntu-latest
+    if: ${{ inputs.do_liniting }}
     steps:
       # Checkout the calling repository FIRST (this must own .git)
       - name: Checkout current repo
