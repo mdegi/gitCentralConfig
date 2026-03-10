@@ -35,7 +35,7 @@ jobs:
     needs: build
     name: Lint Code Base
     runs-on: ubuntu-latest
-    if: ${{ inputs.do_liniting }}
+    if: ${{ inputs.do_linting }}
     steps:
       # Checkout the calling repository FIRST (this must own .git)
       - name: Checkout current repo
