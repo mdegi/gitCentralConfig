@@ -142,11 +142,13 @@
 		<module name="CommentsIndentation">
 			<property name="tokens" value="SINGLE_LINE_COMMENT, BLOCK_COMMENT_BEGIN"/>
 		</module>
+        
+		<!-- Curly braces required for control statements (if/else/for/while/do) -->
+		<module name="NeedBraces"/>
 
-        <!-- Curly braces required for control statements (if/else/for/while/do) -->
-        <module name="NeedBraces">
+        <!-- <module name="NeedBraces">
             <property name="severity" value="error"/>
-        </module>
+        </module> -->
 		
     </module>    
 </module>
