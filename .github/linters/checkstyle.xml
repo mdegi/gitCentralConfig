@@ -144,9 +144,9 @@
 		</module>
 
         <!-- Curly braces required for control statements (if/else/for/while/do) -->
-        <!-- <module name="NeedBraces">
+        <module name="NeedBraces">
             <property name="severity" value="error"/>
-        </module> -->
+        </module>
 		
     </module>    
 </module>
